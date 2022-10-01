@@ -4,7 +4,10 @@ class EmployeePayrollData {
         return this._name; 
     }
     set name(name){ 
+        let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
+        if(nameRegex.test(name)) 
             this._name = name;
+        else throw "Name is Incorrect";
     }
   
     get profilePic() {
@@ -68,14 +71,14 @@ class EmployeePayrollData {
         ", date : "+this.startDate+", profilepic : "+this.profilePic+", department : "+this.department+", note : "+this.note;
     }
   }
+
   let obj = new EmployeePayrollData();
   try{
-    obj.startDate = new Date('1/1/2016');
+    obj.startDate = new Date('1/5/2021');
     console.log(obj);
   }catch (e){
     console.error(e);
   }
-  
   
   const save = () => {
     try{
